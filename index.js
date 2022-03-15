@@ -35,7 +35,10 @@ app.post( '/send', ( req, res ) => {
       body: req.query.noidung || ''
     }, 
     data:{
-      note:'Nhậu'
+      note:'Nhậu',
+      token:req.query.token || '',
+      nameGV: req.query.nameGV || '',
+      noidung: req.query.noidung || ''
     },
     token: req.query.token
 

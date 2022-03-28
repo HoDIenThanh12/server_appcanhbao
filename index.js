@@ -31,14 +31,58 @@ app.post( '/send', ( req, res ) => {
   console.log(req.query); 
   const message = {
     notification: {
-      title: req.query.nameGV || '',
+      title: req.query.nameClass || '',
       body: req.query.noidung || ''
     }, 
     data:{
-      note:'Nhậu',
+      note:'Có thông báo',
       token:req.query.token || '',
-      nameGV: req.query.nameGV || '',
+      nameGV: req.query.nameClass || '',
       noidung: req.query.noidung || ''
+    },
+    token: req.query.token
+
+  };
+  admin.messaging().send( message ).then( ( result ) => {
+     
+    } ).catch( ( err ) => {
+      console.log( { err } );
+    } );
+  res.send( 'Thanh cong' );
+} );
+app.post( '/message', ( req, res ) => {
+  console.log(req.query); 
+  const message = {
+    notification: {
+      title: req.query.nameClass || '',
+      body: req.query.contentMess || ''
+    }, 
+    data:{
+      option:req.query.option,
+      nameClass:req.query.nameClass || '',
+
+      contentMess: req.query.contentMess || '',
+    },
+    token: req.query.token
+
+  };
+  admin.messaging().send( message ).then( ( result ) => {
+     
+    } ).catch( ( err ) => {
+      console.log( { err } );
+    } );
+  res.send( 'Thanh cong' );
+} );
+//cái mới
+app.post( '/notificlass', ( req, res ) => {
+  console.log(req.query); 
+  const message = {
+    notification: {
+      title: req.query.nameNoti || '',
+      body:  req.query.date|| ''
+    }, 
+    data:{
+      note:req.query.contentNoti,
     },
     token: req.query.token
 
